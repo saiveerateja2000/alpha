@@ -9,13 +9,13 @@ provider "aws" {
   region = var.aws_region
 }
 
-# Create random password for each field marked as "RANDOM"
-# Key format: "secret1.abc_password" => creates one random password
+# Create random password for each field in random_password_fields
+# Key format: "secret/alpha.abc_password" => creates one random password
 resource "random_password" "pwd" {
   for_each = merge([
-    for secret_name, fields in var.secrets : {
-      for field_name, field_value in fields :
-        "${secret_name}.${field_name}" => true if field_value == "RANDOM"
+    for secret_name, field_list in var.random_password_fields : {
+      for field_name in field_list :
+        "${secret_name}.${field_name}" => true
     }
   ]...)
 
@@ -27,7 +27,7 @@ resource "random_password" "pwd" {
 resource "aws_secretsmanager_secret" "this" {
   for_each = var.secrets
 
-  name                    = each.key
+  name                    = var.secret_names[each.key]
   recovery_window_in_days = 7
 }
 
