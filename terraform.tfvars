@@ -1,27 +1,24 @@
 aws_region = "us-east-1"
 
 secrets = {
-  "secret1" = {
+  "secret/alpha" = {
     abc_username = "abc_user"
-    abc_password = "RANDOM"
     def_username = "def_user"
-    def_password = "RANDOM"
-    token        = "RANDOM"
   }
 
-  "secret2" = {
+  "secret/beta" = {
     aplha_username = "alpha_user"
-    alpha_password = "RANDOM"
     beta_username  = "beta_user"
-    beta_password  = "RANDOM"
     omega_username = "omega_user"
-    omega_password = "RANDOM"
   }
 
-  "secret3" = {
-    service_user  = "service_account"
-    service_token = "RANDOM"
-    api_key       = "RANDOM"
-    db_password   = "RANDOM"
+  "secret/omega" = {
+    service_user = "service_account"
   }
+}
+
+random_password_fields = {
+  "secret/alpha" = ["abc_password", "def_password", "token"]
+  "secret/beta" = ["alpha_password", "beta_password", "omega_password"]
+  "secret/omega" = ["service_token", "api_key", "db_password"]
 }

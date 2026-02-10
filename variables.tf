@@ -4,6 +4,11 @@ variable "aws_region" {
 }
 
 variable "secrets" {
-  type = map(any)
+  type    = map(any)
+  default = {}
+}
+
+variable "random_password_fields" {
+  type    = map(list(string))
   default = {}
 }
