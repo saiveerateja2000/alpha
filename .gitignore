@@ -11,9 +11,7 @@
 # Terraform
 *.tfstate
 *.tfstate.*
-terraform.tfvars
 *.tfvars
-*.tfvars.json
 !terraform.tfvars.example
 .terraform/
 .terraform.lock.hcl

@@ -2,22 +2,6 @@ provider "aws" {
   region = var.aws_region
 }
 
-# KMS key for encrypting secrets
-resource "aws_kms_key" "secrets" {
-  description             = "KMS key for encrypting secrets in AWS Secrets Manager"
-  deletion_window_in_days = 7
-  enable_key_rotation     = true
-
-  tags = {
-    Name = "secrets-encryption-key"
-  }
-}
-
-resource "aws_kms_alias" "secrets" {
-  name          = "alias/secrets-key"
-  target_key_id = aws_kms_key.secrets.key_id
-}
-
 resource "random_password" "pwd" {
   for_each = merge([
     for secret_name, field_list in var.random_password_fields : {
@@ -36,11 +20,6 @@ resource "aws_secretsmanager_secret" "this" {
 
   name                    = var.secret_names[each.key]
   recovery_window_in_days = 7
-  kms_key_id              = aws_kms_key.secrets.id
-
-  tags = {
-    Name = var.secret_names[each.key]
-  }
 }
 
 resource "aws_secretsmanager_secret_version" "this" {
