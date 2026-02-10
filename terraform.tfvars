@@ -27,4 +27,5 @@ secret_names = {
   "secret1" = "app-db-credentials"
   "secret2" = "api-service-credentials"
   "secret3" = "backend-service-credentials"
+  "secret4" = "dummy"
 }
