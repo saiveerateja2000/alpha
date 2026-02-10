@@ -27,7 +27,7 @@ resource "random_password" "pwd" {
 resource "aws_secretsmanager_secret" "this" {
   for_each = var.secrets
 
-  name_prefix             = each.key
+  name                    = each.key
   recovery_window_in_days = 7
 }
 
