@@ -1,6 +1,5 @@
 aws_region = "us-east-1"
 
-# Static values in secrets
 secrets = {
   "secret1" = {
     abc_username = "abc_user"
@@ -18,14 +17,12 @@ secrets = {
   }
 }
 
-# Fields that will be auto-generated with random passwords
 random_password_fields = {
   "secret1" = ["abc_password", "def_password", "token"]
   "secret2" = ["alpha_password", "beta_password", "omega_password"]
   "secret3" = ["service_token", "api_key", "db_password"]
 }
 
-# Custom names for secrets in AWS Secrets Manager
 secret_names = {
   "secret1" = "app-db-credentials"
   "secret2" = "api-service-credentials"

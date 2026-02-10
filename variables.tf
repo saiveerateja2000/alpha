@@ -14,7 +14,6 @@ variable "random_password_fields" {
 }
 
 variable "secret_names" {
-  description = "Custom names for secrets in AWS Secrets Manager"
-  type        = map(string)
-  default     = {}
+  type    = map(string)
+  default = {}
 }
