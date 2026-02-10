@@ -10,9 +10,8 @@ resource "random_password" "pwd" {
     }
   ]...)
 
-  length            = 32
-  special           = true
-  override_special  = "!@#$%^&*"
+  length  = 16
+  special = false
 }
 
 resource "aws_secretsmanager_secret" "this" {
