@@ -1,0 +1,38 @@
+# Git ignore file for Terraform secrets management
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform.tfvars.example
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Sensitive files
+secrets.json
+.env
+.env.local
+*.pem
+*.key
+*.crt
+
+# OS files
+Thumbs.db
+.DS_Store
+*.tmp
+
+# Logs
+*.log
